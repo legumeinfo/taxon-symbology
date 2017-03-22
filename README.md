@@ -4,19 +4,20 @@ Javascript library for consistent coloring of visualizations by genus &amp; spec
 ## Usage
 
 ```
- taxonChroma.get(taxon, options); // returns css color specification in rgb
+taxonChroma.get(taxon, options); // returns css color specification in rgb
 
 // examples:
- taxonChroma.get('Arachis hypogaea'); // returns "rgb(254, 255, 32)"
- taxonChroma.get('Arachis burkartii'); // etc.
+taxonChroma.get('Arachis hypogaea'); // returns "rgb(254, 255, 32)"
+taxonChroma.get('Arachis burkartii'); // etc.
 
- // make 20% lighter overall
- taxonChroma.get(someTaxon, { lightnessFactor: 1.2 } );
+// make 20% lighter overall
+taxonChroma.get(someTaxon, { lightnessFactor: 1.2 } );
 
- // override some taxon
- taxonChroma.get(acc.properties.taxon, {
-  'overrides' : {
-   'phaseolus lunatus' : 'green',
-}
-
+// override some taxon. this is mainly useful to take advantage of the color
+// caching.
+taxonChroma.get(myTaxonVar, {
+ 'overrides' : {
+  'phaseolus lunatus' : 'green',
+ }
+});
 ```
