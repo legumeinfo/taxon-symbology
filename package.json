@@ -1,0 +1,26 @@
+{
+  "name": "lis-taxon-symbology",
+  "version": "1.0.0",
+  "description": "Javascript library for consistent coloring of visualizations by genus & species. Edit",
+  "main": "src/main.js",
+  "scripts": {
+    "install" : "webpack -p --display-modules --optimize-minimize",
+    "test" : "open test/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncgr/lis-taxon-symbology.git"
+  },
+  "author": "Alex G Rice <agr@ncgr.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ncgr/lis-taxon-symbology/issues"
+  },
+  "homepage": "https://github.com/ncgr/lis-taxon-symbology#readme",
+  "dependencies": {
+    "chroma-js": "^1.2.2"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.1"
+  }
+}
