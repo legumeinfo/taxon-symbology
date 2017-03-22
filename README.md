@@ -13,8 +13,7 @@ taxonChroma.get('Arachis burkartii'); // etc.
 // make 20% lighter overall
 taxonChroma.get(someTaxon, { lightnessFactor: 1.2 } );
 
-// override some taxon. this is mainly useful to take advantage of the color
-// caching.
+// override some taxon
 taxonChroma.get(myTaxonVar, {
  'overrides' : {
   'phaseolus lunatus' : 'green',
