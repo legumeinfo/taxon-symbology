@@ -1,26 +1,71 @@
 {
-  "name": "lis-taxon-symbology",
+  "name": "@legumeinfo/taxon-symbology",
   "version": "1.0.0",
-  "description": "Javascript library for consistent coloring of visualizations by genus & species. Edit",
-  "main": "src/main.js",
-  "scripts": {
-    "install" : "webpack -p --display-modules --optimize-minimize",
-    "test" : "open test/index.html"
-  },
+  "description": "A TypeScript library for consistent coloring of visualizations by genus & species",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ncgr/lis-taxon-symbology.git"
+    "url": "https://github.com/legumeinfo/taxon-symbology"
   },
-  "author": "Alex G Rice <agr@ncgr.org>",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ncgr/lis-taxon-symbology/issues"
+    "url": "https://github.com/legumeinfo/taxon-symbology/issues"
   },
-  "homepage": "https://github.com/ncgr/lis-taxon-symbology#readme",
-  "dependencies": {
-    "chroma-js": "^1.2.2"
+  "homepage": "https://github.com/legumeinfo/taxon-symbology#readme",
+  "main": "lib/main.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "/lib",
+    "/dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build:clean": "rimraf lib",
+    "build:watch": "tsc --watch",
+    "clean": "npm run bundle:clean & npm run build:clean & npm run test:clean",
+    "lint": "npm run lint:eslint",
+    "lint:eslint": "eslint src/*.ts src/**/*.ts",
+    "lint:eslint-config-prettier": "eslint-config-prettier src/*.ts src/**/*.ts",
+    "format": "prettier src/*.ts src/**/*.ts --write",
+    "prepublish": "npm run clean && npm run build && npm run bundle",
+    "serve": "wds --watch",
+    "serve:prod": "MODE=prod npm run serve",
+    "test": "npm run test:dev && npm run test:prod",
+    "test:clean": "rimraf test",
+    "test:dev": "wtr",
+    "test:watch": "wtr --watch",
+    "test:prod": "MODE=prod wtr",
+    "test:prod:watch": "MODE=prod wtr --watch",
+    "bundle": "rollup -c rollup.config.js",
+    "bundle:clean": "rimraf dist",
+    "bundle:watch": "rollup -c -w",
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
+  "author": "Legume Information System",
+  "license": "Apache-2.0",
   "devDependencies": {
-    "webpack": "^2.3.1"
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@web/dev-server": "^0.4.1",
+    "@web/dev-server-legacy": "^2.1.0",
+    "@web/test-runner": "^0.18.0",
+    "@web/test-runner-playwright": "^0.11.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.0",
+    "pinst": "^3.0.0",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.9.6",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "chroma-js": "^2.4.2"
   }
 }
