@@ -43,6 +43,13 @@
     "prepack": "pinst --disable",
     "postpack": "pinst --enable"
   },
+  "keywords": [
+    "typescript",
+    "chroma-js",
+    "legumes",
+    "agbio",
+    "biology"
+  ],
   "author": "Legume Information System",
   "license": "Apache-2.0",
   "devDependencies": {
