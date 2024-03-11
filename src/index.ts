@@ -21,14 +21,14 @@
  * });
  */
 
-import * as chroma from "chroma.ts";
+import * as chroma from 'chroma.ts';
 
 const moreBrewerColors = chroma.brewer.Set2;
 
 // some of these colors are carried over from the colors.json file
 // from the pholylotree module. they are all cbrewer classification
 // colors.
-const baseColors: { [key: string]: string|number } = {
+const baseColors: {[key: string]: string | number} = {
   apios: moreBrewerColors[0],
   arachis: '#bcbd22',
   cajanus: '#ffbb78',
@@ -50,32 +50,32 @@ export const genera = Object.keys(baseColors);
 
 export type GetOptions = {
   lightnessFactor?: number;
-  overrides?: { [key: string]: string };
+  overrides?: {[key: string]: string};
 };
 
 /**
  * a consistent hashing algorithm
  * https://gist.github.com/vaiorabbit/5657561
  * http://isthe.com/chongo/tech/comp/fnv/#xor-fold
-**/
+ **/
 function fnv32a(str: string, hashSize: number): number {
   const FNV1_32A_INIT = 0x811c9dc5;
   let hval = FNV1_32A_INIT;
   for (let i = 0; i < str.length; ++i) {
     hval ^= str.charCodeAt(i);
-    hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
+    hval +=
+      (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
   }
   return (hval >>> 0) % hashSize;
 }
 
 export class TaxonChroma {
-
   // default lightness factor (1= don't post-adjust)
   static readonly LIGHTNESS_FACTOR = 1;
   static readonly MIN_LIGHTNESS = 0.3;
 
-  defaultColor: string;  // used for non-legume genera
-  colorCache: { [key: string]: string } = {};
+  defaultColor: string; // used for non-legume genera
+  colorCache: {[key: string]: string} = {};
 
   constructor(defaultColor: string = '#d3d3d3') {
     this.defaultColor = defaultColor;
@@ -88,10 +88,8 @@ export class TaxonChroma {
     taxon = taxon.toLowerCase();
 
     // options is an object w/ keys lightnessFactor, overrides
-    const {
-      lightnessFactor = TaxonChroma.LIGHTNESS_FACTOR,
-      overrides = {}
-    } = options;
+    const {lightnessFactor = TaxonChroma.LIGHTNESS_FACTOR, overrides = {}} =
+      options;
 
     // return override color
     if (overrides[taxon] !== undefined) {
@@ -112,14 +110,13 @@ export class TaxonChroma {
       const [hue, ..._] = chroma.color(genusColor).hsl();
       const lightness =
         TaxonChroma.MIN_LIGHTNESS +
-	      (fnv32a(species, 1000) / 1000) * (1 - 2 * TaxonChroma.MIN_LIGHTNESS);
+        (fnv32a(species, 1000) / 1000) * (1 - 2 * TaxonChroma.MIN_LIGHTNESS);
       color = chroma.color(hue, 1, lightness * lightnessFactor, 'hsl').hex();
     }
     this.colorCache[taxon] = color;
 
     return color;
-  };
-
-};
+  }
+}
 
 export const taxonChroma = new TaxonChroma();
