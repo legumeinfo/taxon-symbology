@@ -66,6 +66,6 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "chroma-js": "^2.4.2"
+    "chroma.ts": "^1.0.10"
   }
 }
