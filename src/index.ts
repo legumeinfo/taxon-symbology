@@ -25,10 +25,12 @@ import * as chroma from 'chroma.ts';
 
 const moreBrewerColors = chroma.brewer.Set2;
 
+export type ColorMap = {[key: string]: string|number};
+
 // some of these colors are carried over from the colors.json file
 // from the pholylotree module. they are all cbrewer classification
 // colors.
-const baseColors: {[key: string]: string | number} = {
+const baseColors: ColorMap = {
   apios: moreBrewerColors[0],
   arachis: '#bcbd22',
   cajanus: '#ffbb78',
@@ -50,7 +52,7 @@ export const genera = Object.keys(baseColors);
 
 export type GetOptions = {
   lightnessFactor?: number;
-  overrides?: {[key: string]: string};
+  overrides?: ColorMap;
 };
 
 /**
@@ -75,13 +77,13 @@ export class TaxonChroma {
   static readonly MIN_LIGHTNESS = 0.3;
 
   defaultColor: string; // used for non-legume genera
-  colorCache: {[key: string]: string} = {};
+  colorCache: ColorMap = {};
 
   constructor(defaultColor: string = '#d3d3d3') {
     this.defaultColor = defaultColor;
   }
 
-  public get(taxon: string, options: GetOptions = {}): string {
+  public get(taxon: string, options: GetOptions = {}): string|number {
     if (taxon.indexOf(' ') === -1) {
       throw 'Error: required format is "genus species" with a space between';
     }
@@ -91,9 +93,14 @@ export class TaxonChroma {
     const {lightnessFactor = TaxonChroma.LIGHTNESS_FACTOR, overrides = {}} =
       options;
 
+    // convert overrides to lowercase
+    const lowerOverrides: ColorMap = Object.fromEntries(
+      Object.entries(overrides).map(([k, v]) => [k.toLowerCase(), v])
+    );
+
     // return override color
-    if (overrides[taxon] !== undefined) {
-      return overrides[taxon];
+    if (lowerOverrides[taxon] !== undefined) {
+      return lowerOverrides[taxon];
     }
 
     // return cached color

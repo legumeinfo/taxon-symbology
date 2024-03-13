@@ -36,8 +36,10 @@ taxonChroma.get(someTaxon, { lightnessFactor: 1.2 } );
 
 // override some taxon
 taxonChroma.get(myTaxonVar, {
- 'overrides' : {
-  'phaseolus lunatus' : 'green',
- }
+  'overrides' : {
+    'phaseolus lunatus' : 'green',
+  }
 });
 ```
+Note that the library is case-insensitive, meaning that `taxonChroma.get('Arachis hypogaea')` and `taxonChroma.get('ARACHIS HYPOGAEA')` will return the same result.
+Similarly, if the `overrides` has multiple entries for the same taxon (i.e. different capitalizations), then the last one will be used.
