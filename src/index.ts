@@ -25,7 +25,7 @@ import * as chroma from 'chroma.ts';
 
 const moreBrewerColors = chroma.brewer.Set2;
 
-export type ColorMap = {[key: string]: string|number};
+export type ColorMap = {[key: string]: string | number};
 
 // some of these colors are carried over from the colors.json file
 // from the pholylotree module. they are all cbrewer classification
@@ -83,7 +83,7 @@ export class TaxonChroma {
     this.defaultColor = defaultColor;
   }
 
-  public get(taxon: string, options: GetOptions = {}): string|number {
+  public get(taxon: string, options: GetOptions = {}): string | number {
     if (taxon.indexOf(' ') === -1) {
       throw 'Error: required format is "genus species" with a space between';
     }
@@ -95,7 +95,7 @@ export class TaxonChroma {
 
     // convert overrides to lowercase
     const lowerOverrides: ColorMap = Object.fromEntries(
-      Object.entries(overrides).map(([k, v]) => [k.toLowerCase(), v])
+      Object.entries(overrides).map(([k, v]) => [k.toLowerCase(), v]),
     );
 
     // return override color
