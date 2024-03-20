@@ -34,9 +34,9 @@ All built files will be placed in the `lib/` directory.
 
 ## Testing
 
-This project uses modern-web.dev's
-[@web/test-runner](https://www.npmjs.com/package/@web/test-runner) for testing. See the
-[modern-web.dev testing documentation](https://modern-web.dev/docs/test-runner/overview) for
+This project uses
+[Jest](https://www.npmjs.com/package/jest) for testing. See the
+[modern-web.dev testing documentation](https://jestjs.io/) for
 more information.
 
 Tests can be run with the `test` script:
@@ -50,8 +50,6 @@ For local testing during development, the `test:dev:watch` command will run test
 ```bash
 npm test:watch
 ```
-
-Alternatively the `test:prod` and `test:prod:watch` commands will run tests in production mode.
 
 ## Dev Server
 

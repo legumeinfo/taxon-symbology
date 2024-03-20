@@ -76,8 +76,8 @@ export class TaxonChroma {
   static readonly LIGHTNESS_FACTOR = 1;
   static readonly MIN_LIGHTNESS = 0.3;
 
-  defaultColor: string; // used for non-legume genera
-  colorCache: ColorMap = {};
+  readonly defaultColor: string; // used for non-legume genera
+  private colorCache: ColorMap = {};
 
   constructor(defaultColor: string = '#d3d3d3') {
     this.defaultColor = defaultColor;
