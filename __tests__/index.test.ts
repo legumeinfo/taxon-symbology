@@ -107,7 +107,7 @@ test('base colors', () => {
     'Senna tora',
     'Sindora glabra',
     'Trifolium pratense',
-    'Trifolium repen',
+    'Trifolium repens',
     'Vicia faba',
     'Vigna angularis',
     'Vigna radiata',
