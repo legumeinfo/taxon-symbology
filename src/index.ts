@@ -23,39 +23,35 @@
 
 import * as chroma from 'chroma.ts';
 
-const moreBrewerColors = chroma.brewer.Set2;
-
 export type ColorMap = {[key: string]: string | number};
 
-// some of these colors are carried over from the colors.json file
-// from the pholylotree module. they are all cbrewer classification
-// colors.
+// New colors 15 degrees apart in hue space, to reduce conflicts
 const baseColors: ColorMap = {
-  acacia: '#4080c0',
-  aeschynomene: '#80c040',
-  apios: moreBrewerColors[0],
-  arachis: '#bcbd22',
-  bauhinia: '#ff8080',
-  cajanus: '#ffbb78',
-  cercis: '#80ff80',
-  chamaecrista: moreBrewerColors[5],
-  cicer: '#2ca02c',
-  dalbergia: '#c04080',
-  glycine: '#1f77b4',
-  lablab: '#8040c0',
-  lens: '#98df8a',
-  lotus: '#17becf',
-  lupinus: '#ff9896',
-  medicago: '#8c564b',
-  phanera: '#40c080',
-  phaseolus: '#e377c2',
-  pisum: '#f7b6d2',
-  quillaja: '#404040',
-  senna: '#8080ff',
-  sindora: '#c08040',
-  trifolium: moreBrewerColors[2],
-  vicia: moreBrewerColors[4],
-  vigna: '#d62728',
+  acacia: '#ffc000',
+  aeschynomene: '#ff4000',
+  apios: '#00c0ff',
+  arachis: '#ff8000',
+  bauhinia: '#ff00c0',
+  cajanus: '#0040ff',
+  cercis: '#ff0040',
+  chamaecrista: '#ffff00',
+  cicer: '#80ff00',
+  dalbergia: '#ff0000',
+  glycine: '#4000ff',
+  lablab: '#8000ff',
+  lens: '#00ff80',
+  lotus: '#00ffff',
+  lupinus: '#c000ff',
+  medicago: '#40ff00',
+  phanera: '#ff0080',
+  phaseolus: '#0000ff',
+  pisum: '#00ff00',
+  quillaja: '#666666', // not a legume, but related
+  senna: '#c0ff00',
+  sindora: '#ff00ff',
+  trifolium: '#00ff40',
+  vicia: '#00ffc0',
+  vigna: '#0080ff',
 };
 
 export const genera = Object.keys(baseColors);
