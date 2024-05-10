@@ -31,6 +31,8 @@ export type ColorMap = {[key: string]: string | number};
 // from the pholylotree module. they are all cbrewer classification
 // colors.
 const baseColors: ColorMap = {
+  acacia: '#4080c0',
+  aeschynomene: '#80c040',
   apios: moreBrewerColors[0],
   arachis: '#bcbd22',
   bauhinia: '#ff8080',
@@ -38,11 +40,14 @@ const baseColors: ColorMap = {
   cercis: '#80ff80',
   chamaecrista: moreBrewerColors[5],
   cicer: '#2ca02c',
+  dalbergia: '#c04080',
   glycine: '#1f77b4',
+  lablab: '#8040c0',
   lens: '#98df8a',
   lotus: '#17becf',
   lupinus: '#ff9896',
   medicago: '#8c564b',
+  phanera: '#40c080',
   phaseolus: '#e377c2',
   pisum: '#f7b6d2',
   quillaja: '#404040',
